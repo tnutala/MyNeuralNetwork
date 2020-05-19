@@ -19,9 +19,18 @@ images, labels = mndata.load_training()
 images, labels = mndata.load_testing()
 
 
+x = images[1]
 
 # activation function
 
 W = np.array([[1,2],[2,1]])
 
-h = g((W.transpose())@x +c)
+def relu(x):
+    return(max([0,x]))
+
+#bias term
+b = np.array([1,2])
+
+# affine transformation 
+h = relu(W @ x + b)
+
