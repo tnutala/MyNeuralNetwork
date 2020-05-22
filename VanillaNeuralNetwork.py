@@ -35,8 +35,10 @@ def gradient():
 def f():
     pass
 
-def lik():
-    pass
+def loss(y,y2):
+    
+    return((y-y2)**2)
+    
 def regularizer():
     pass
 
@@ -54,7 +56,7 @@ def forwardprop(x,y,l,W,b):
         
     y_hat = h
     #cost
-    J = lik(y,y_hat)+ lamb * regularizer(W,b)
+    J = loss(y,y_hat)+ lamb * regularizer(W,b)
     
     return(y_hat,J)
 
@@ -77,21 +79,25 @@ def backprop(y_hat,y,l,W,b):
 
 mndata = MNIST('.')
 
-images, labels = mndata.load_training()
+train_images, train_labels = mndata.load_training()
+train_images
 # or
-images, labels = mndata.load_testing()
+test_images, test_labels = mndata.load_testing()
 
+# minibatch sampling
 
-x = images[1]
+# X is an n x p design matrix
+#X = train_images[np.random.randint(0,len(train_images),100)]
 
 # activation function
 
-W = np.array([[1,2],[2,1]])
-
-
-#bias term
-b = np.array([1,2])
-
-# affine transformation 
-h = relu(W @ x + b)
+## W must be a p x 
+#W = np.array([[1,2],[2,1]])
+#
+#
+##bias term
+#b = np.array([1,2])
+#
+## affine transformation 
+#h = relu(W @ x + b)
 
