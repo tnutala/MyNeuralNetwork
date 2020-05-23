@@ -80,7 +80,7 @@ def backprop(y_hat,y,l,W,b):
 mndata = MNIST('.')
 
 train_images, train_labels = mndata.load_training()
-train_images
+
 # or
 test_images, test_labels = mndata.load_testing()
 
