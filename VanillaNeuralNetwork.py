@@ -10,13 +10,24 @@ import matplotlib.pyplot as plt
 from mnist import MNIST
 
 
+"""
+Training Set using stochastic gradient descent. 
+It should achieve 97-98% accuracy on the Test Set
+"""
 
+
+class MyNeuralNet():
+    super(MyNeuralNet).__init__
+    
+    
 
 def relu(x):
     """returns max(0,x_i) element-wise for x"""
     x = np.array(x)
 
     return(x*(x>0))
+    
+
 
 def cross_entropy_loss(y,p,M):
     loss = 0
@@ -37,7 +48,7 @@ def f():
 
 def loss(y,y2):
     
-    return((y-y2)**2)
+    return(np.mean((y-y2)**2))
     
 def regularizer():
     pass
