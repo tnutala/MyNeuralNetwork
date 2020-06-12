@@ -10,6 +10,15 @@ import matplotlib.pyplot as plt
 from mnist import MNIST
 
 
+mndata = MNIST('.')
+
+train_images, train_labels = mndata.load_training()
+
+# or
+test_images, test_labels = mndata.load_testing()
+
+
+
 """
 Training Set using stochastic gradient descent. 
 It should achieve 97-98% accuracy on the Test Set
@@ -29,15 +38,15 @@ def relu(x):
     
 
 
-def cross_entropy_loss(y,p,M):
-    loss = 0
-    observations = y.shape[0]
-    for i in range(M):
-        for o in range(observations):
-            loss-= y*np.log(p)
-            
-    
-    return(loss)
+#def cross_entropy_loss(y,p,M):
+#    loss = 0
+#    observations = y.shape[0]
+#    for i in range(M):
+#        for o in range(observations):
+#            loss-= y*np.log(p)
+#            
+#    
+#    return(loss)
 
 #TODO : functions to code or remove
 def gradient():
@@ -67,7 +76,7 @@ def forwardprop(x,y,l,W,b):
         
     y_hat = h
     #cost
-    J = loss(y,y_hat)+ lamb * regularizer(W,b)
+    J = loss(y,y_hat) #+ lamb * regularizer(W,b)
     
     return(y_hat,J)
 
@@ -88,12 +97,13 @@ def backprop(y_hat,y,l,W,b):
     return(g)
 
 
-mndata = MNIST('.')
+# required parameters 
+num_layers = 2
+learning_rate = .01
 
-train_images, train_labels = mndata.load_training()
 
-# or
-test_images, test_labels = mndata.load_testing()
+
+
 
 # minibatch sampling
 
